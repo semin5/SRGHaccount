@@ -1,0 +1,11 @@
+[Unit]
+Description=Proxy SRGH IT account VIP port 3011 to local app
+Requires=SRGH_IT-account.service
+After=SRGH_IT-account.service
+
+[Service]
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd 127.0.0.1:13011
+Restart=on-failure
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes

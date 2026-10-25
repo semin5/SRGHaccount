@@ -1,0 +1,19 @@
+[Unit]
+Description=SRGH IT Account List (Spring Boot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sarangit
+Group=sarangit
+WorkingDirectory=/opt/SRGH_IT/account
+Environment=PORT=13011
+EnvironmentFile=/etc/SRGH_IT/account.env
+ExecStart=/usr/bin/java -Xms128m -Xmx384m -jar /opt/SRGH_IT/account/account.jar
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
